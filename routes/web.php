@@ -2,9 +2,11 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@login');
+//Route::get('/', 'HomeController@login');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::get('/', 'HomeController@index')->name('home');
+
+//Route::group(['middleware' => 'auth'], function() {
     Route::post('/change_password', 'Auth\ChangePasswordController@update');
 
     Route::get('/home', 'HomeController@index')->name('home');
@@ -31,6 +33,6 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
-});
+//});
 
 Route::get('storage/{filename}', "GuestController@showImage");
